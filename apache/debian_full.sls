@@ -11,6 +11,12 @@ extend:
       - order: 175
     service:
       - order: 455
+  apache-reload:
+    module.wait:
+      - order: 420
+  apache-restart:
+    module.wait:
+      - order: 425
 
 a2dissite 000-default:
   cmd.run:
@@ -21,15 +27,6 @@ a2dissite 000-default:
     - require:
       - pkg: apache
 
-extend:
-  apache-reload:
-    module.wait:
-      - order: 420
-
-extend:
-  apache-restart:
-    module.wait:
-      - order: 425
 
 /etc/apache2/sites-available/default:
   file.absent:
