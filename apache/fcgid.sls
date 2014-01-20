@@ -1,8 +1,5 @@
 {% if grains['os_family']=="Debian" %}
 
-include:
-  - apt
-
 mod-fcgid:
   pkg.installed:
     - name: libapache2-mod-fcgid
